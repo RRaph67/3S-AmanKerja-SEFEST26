@@ -3,25 +3,21 @@ import { Beranda } from './pages/Beranda';
 import { TanyaHakmu } from './pages/TanyaHakMu';
 import { BantuanDarurat } from './pages/BantuanDarurat';
 import { LaporBahaya } from './pages/LaporBahaya';
+import { Edukasi } from './pages/Edukasi';
 
-type PageType = 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
+type PageType = 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('beranda');
 
-  // Sinkronisasi URL saat halaman pertama kali dimuat atau ditekan tombol Back/Forward di browser
   useEffect(() => {
     const handleUrlChange = () => {
       const path = window.location.pathname;
-      if (path === '/bantuan-darurat') {
-        setCurrentPage('bantuanDarurat');
-      } else if (path === '/lapor-bahaya') {
-        setCurrentPage('laporBahaya');
-      } else if (path === '/tanya-hakmu') {
-        setCurrentPage('tanyaHakmu');
-      } else {
-        setCurrentPage('beranda');
-      }
+      if (path === '/bantuan-darurat') setCurrentPage('bantuanDarurat');
+      else if (path === '/lapor-bahaya') setCurrentPage('laporBahaya');
+      else if (path === '/tanya-hakmu') setCurrentPage('tanyaHakmu');
+      else if (path === '/edukasi') setCurrentPage('edukasi');
+      else setCurrentPage('beranda');
     };
 
     handleUrlChange();
@@ -29,14 +25,14 @@ function App() {
     return () => window.removeEventListener('popstate', handleUrlChange);
   }, []);
 
-  // Handler transisi halaman dan perubahan URL
   const handlePageChange = (page: PageType) => {
     setCurrentPage(page);
     let newPath = '/';
     if (page === 'bantuanDarurat') newPath = '/bantuan-darurat';
-    if (page === 'laporBahaya') newPath = '/lapor-bahaya';
-    if (page === 'tanyaHakmu') newPath = '/tanya-hakmu';
-    
+    else if (page === 'laporBahaya') newPath = '/lapor-bahaya';
+    else if (page === 'tanyaHakmu') newPath = '/tanya-hakmu';
+    else if (page === 'edukasi') newPath = '/edukasi'; // Tambahkan ini
+
     window.history.pushState({}, '', newPath);
   };
 
@@ -53,6 +49,9 @@ function App() {
       )}
       {currentPage === 'tanyaHakmu' && (
         <TanyaHakmu currentPage={currentPage} setCurrentPage={handlePageChange} />
+      )}
+      {currentPage === 'edukasi' && (
+        <Edukasi currentPage={currentPage} setCurrentPage={handlePageChange} />
       )}
     </>
   );

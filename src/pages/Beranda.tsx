@@ -2,8 +2,8 @@ import React from 'react';
 import { Header } from '../components/Header';
 
 type BerandaProps = {
-  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
-  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu') => void;
+  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi';
+  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi') => void;
 };
 
 export const Beranda: React.FC<BerandaProps> = ({ currentPage, setCurrentPage }) => {
@@ -11,7 +11,7 @@ export const Beranda: React.FC<BerandaProps> = ({ currentPage, setCurrentPage })
     <div className="min-h-screen bg-[#F8FAFC] text-slate-800 antialiased">
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 md:px-12 space-y-8">
+      <main className="w-full px-6 md:px-20 lg:px-32 py-8 space-y-8">
         <div className="overflow-hidden rounded-3xl bg-white border border-slate-100 p-6 md:p-10 shadow-2xs flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="max-w-xl space-y-3 text-center md:text-left">
             <h1 className="text-3xl font-black tracking-tight text-slate-900 md:text-4xl">
@@ -21,11 +21,11 @@ export const Beranda: React.FC<BerandaProps> = ({ currentPage, setCurrentPage })
               Keselamatan Anda adalah prioritas utama kami hari ini. Tetap waspada, kenali hak hukum Anda, dan jangan ragu untuk melaporkan bahaya di tempat kerja.
             </p>
           </div>
-          <div className="w-full md:w-[320px] shrink-0">
-            <img 
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" 
-              alt="Pekerja Lapangan" 
-              className="h-48 w-full rounded-2xl object-cover shadow-xs"
+          <div className="w-full md:w-[420px] shrink-0">
+            <img
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
+              alt="Pekerja Lapangan"
+              className="h-70 w-full rounded-2xl object-cover shadow-xs"
             />
           </div>
         </div>
@@ -59,7 +59,7 @@ export const Beranda: React.FC<BerandaProps> = ({ currentPage, setCurrentPage })
               </div>
             </div>
 
-            <div 
+            <div
               onClick={() => setCurrentPage('tanyaHakmu')}
               className="cursor-pointer rounded-2xl border border-slate-100 bg-white p-4 shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between"
             >
@@ -109,9 +109,9 @@ export const Beranda: React.FC<BerandaProps> = ({ currentPage, setCurrentPage })
             </div>
 
             <div className="relative overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[260px] flex flex-col justify-end p-6 md:p-8">
-              <img 
-                src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80" 
-                alt="Alat Pelindung Diri" 
+              <img
+                src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80"
+                alt="Alat Pelindung Diri"
                 className="absolute inset-0 h-full w-full object-cover opacity-30"
               />
               <div className="relative z-10 space-y-2 max-w-xl">

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Header } from '../components/Header';
 
 type LaporBahayaProps = {
-  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
-  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu') => void;
+  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi';
+  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi') => void;
 };
 
 export const LaporBahaya: React.FC<LaporBahayaProps> = ({ currentPage, setCurrentPage }) => {
