@@ -12,7 +12,7 @@ export const BantuanDarurat: React.FC<BantuanDaruratProps> = ({ currentPage, set
     <div className="min-h-screen bg-[#F8FAFC] text-slate-800 antialiased">
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      <main className="mx-auto max-w-7xl px-4 py-10 md:px-12">
+      <main className="max-w-[1200px] mx-auto px-6 py-8 space-y-10">
         {/* Header Judul Halaman */}
         <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>

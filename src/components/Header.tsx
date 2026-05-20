@@ -19,7 +19,8 @@ export const Header: FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white px-6 py-4 md:px-12">
-        <div className="flex w-full items-center justify-between gap-4 px-6 md:px-12">        <div className="flex items-center gap-3">
+        <div className="flex w-full items-center justify-between gap-4 px-6 md:px-12">        
+          <div className="flex items-center gap-3">
           <button
             type="button"
             className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400"
