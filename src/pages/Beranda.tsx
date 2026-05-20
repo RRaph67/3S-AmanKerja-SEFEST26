@@ -2,8 +2,8 @@ import React from 'react';
 import { Header } from '../components/Header';
 
 type BerandaProps = {
-  currentPage: 'beranda' | 'bantuanDarurat' | 'tanyaHakmu';
-  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'tanyaHakmu') => void;
+  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
+  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu') => void;
 };
 
 export const Beranda: React.FC<BerandaProps> = ({ currentPage, setCurrentPage }) => {

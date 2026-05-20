@@ -1,21 +1,40 @@
-import React from 'react';
+import { useState } from 'react';
+import type { FC } from 'react';
 
 type HeaderProps = {
-  currentPage: 'beranda' | 'bantuanDarurat' | 'tanyaHakmu';
-  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'tanyaHakmu') => void;
+  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
+  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu') => void;
 };
 
-export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
+export const Header: FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleNavigation = (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu') => {
+    setCurrentPage(page);
+    setSidebarOpen(false);
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white px-6 py-4 md:px-12">
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <div className="flex items-center gap-2">
+    <>
+      <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white px-6 py-4 md:px-12">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            onClick={() => setSidebarOpen((open) => !open)}
+            aria-label={sidebarOpen ? 'Tutup sidebar' : 'Buka sidebar'}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
           <span className="text-xl font-black tracking-wider text-black">AMAN KERJA</span>
         </div>
 
         <nav className="hidden items-center gap-8 md:flex">
           <button
-            onClick={() => setCurrentPage('beranda')}
+            onClick={() => handleNavigation('beranda')}
             className={`text-sm font-medium transition-all relative py-1 ${
               currentPage === 'beranda'
                 ? 'text-black font-bold after:absolute after:-bottom-[22px] after:left-0 after:h-[3px] after:w-full after:bg-red-500'
@@ -25,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
             Beranda
           </button>
           <button
-            onClick={() => setCurrentPage('bantuanDarurat')}
+            onClick={() => handleNavigation('bantuanDarurat')}
             className={`text-sm font-medium transition-all relative py-1 ${
               currentPage === 'bantuanDarurat'
                 ? 'text-black font-bold after:absolute after:-bottom-[22px] after:left-0 after:h-[3px] after:w-full after:bg-red-500'
@@ -34,9 +53,18 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
           >
             Bantuan Darurat
           </button>
-          <a href="#lapor" className="text-sm font-medium text-gray-600 hover:text-black">Lapor Bahaya</a>
           <button
-            onClick={() => setCurrentPage('tanyaHakmu')}
+            onClick={() => handleNavigation('laporBahaya')}
+            className={`text-sm font-medium transition-all relative py-1 ${
+              currentPage === 'laporBahaya'
+                ? 'text-black font-bold after:absolute after:-bottom-[22px] after:left-0 after:h-[3px] after:w-full after:bg-red-500'
+                : 'text-gray-600 hover:text-black'
+            }`}
+          >
+            Lapor Bahaya
+          </button>
+          <button
+            onClick={() => handleNavigation('tanyaHakmu')}
             className={`text-sm font-medium transition-all relative py-1 ${
               currentPage === 'tanyaHakmu'
                 ? 'text-black font-bold after:absolute after:-bottom-[22px] after:left-0 after:h-[3px] after:w-full after:bg-red-500'
@@ -61,14 +89,69 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
             </svg>
           </button>
-
-          <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
-            alt="User Profile"
-            className="h-9 w-9 rounded-full border border-teal-500 object-cover"
-          />
         </div>
       </div>
     </header>
+
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-40 flex bg-black/20 backdrop-blur-sm">
+          <button
+            type="button"
+            className="absolute inset-0 h-full w-full"
+            aria-label="Tutup sidebar"
+            onClick={() => setSidebarOpen(false)}
+          />
+          <aside className="relative z-50 h-full w-72 bg-white p-6 shadow-2xl sm:w-80">
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(false)}
+              className="mb-6 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              Tutup
+            </button>
+            <nav className="flex flex-col gap-4 text-sm">
+              <button
+                onClick={() => handleNavigation('beranda')}
+                className={`text-left font-medium ${
+                  currentPage === 'beranda' ? 'text-black' : 'text-slate-600 hover:text-black'
+                }`}
+              >
+                Beranda
+              </button>
+              <button
+                onClick={() => handleNavigation('bantuanDarurat')}
+                className={`text-left font-medium ${
+                  currentPage === 'bantuanDarurat' ? 'text-black' : 'text-slate-600 hover:text-black'
+                }`}
+              >
+                Bantuan Darurat
+              </button>
+              <button
+                onClick={() => handleNavigation('laporBahaya')}
+                className={`text-left font-medium ${
+                  currentPage === 'laporBahaya' ? 'text-black' : 'text-slate-600 hover:text-black'
+                }`}
+              >
+                Lapor Bahaya
+              </button>
+              <button
+                onClick={() => handleNavigation('tanyaHakmu')}
+                className={`text-left font-medium ${
+                  currentPage === 'tanyaHakmu' ? 'text-black' : 'text-slate-600 hover:text-black'
+                }`}
+              >
+                Tanya Hakmu
+              </button>
+              <a href="#edukasi" className="text-left font-medium text-slate-600 transition hover:text-black">
+                Edukasi
+              </a>
+            </nav>
+          </aside>
+        </div>
+      )}
+    </>
   );
 };

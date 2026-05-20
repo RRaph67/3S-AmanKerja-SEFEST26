@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Beranda } from './pages/Beranda';
 import { TanyaHakmu } from './pages/TanyaHakMu';
 import { BantuanDarurat } from './pages/BantuanDarurat';
+import { LaporBahaya } from './pages/LaporBahaya';
 
-type PageType = 'beranda' | 'bantuanDarurat' | 'tanyaHakmu';
+type PageType = 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('beranda');
@@ -14,6 +15,8 @@ function App() {
       const path = window.location.pathname;
       if (path === '/bantuan-darurat') {
         setCurrentPage('bantuanDarurat');
+      } else if (path === '/lapor-bahaya') {
+        setCurrentPage('laporBahaya');
       } else if (path === '/tanya-hakmu') {
         setCurrentPage('tanyaHakmu');
       } else {
@@ -31,6 +34,7 @@ function App() {
     setCurrentPage(page);
     let newPath = '/';
     if (page === 'bantuanDarurat') newPath = '/bantuan-darurat';
+    if (page === 'laporBahaya') newPath = '/lapor-bahaya';
     if (page === 'tanyaHakmu') newPath = '/tanya-hakmu';
     
     window.history.pushState({}, '', newPath);
@@ -43,6 +47,9 @@ function App() {
       )}
       {currentPage === 'bantuanDarurat' && (
         <BantuanDarurat currentPage={currentPage} setCurrentPage={handlePageChange} />
+      )}
+      {currentPage === 'laporBahaya' && (
+        <LaporBahaya currentPage={currentPage} setCurrentPage={handlePageChange} />
       )}
       {currentPage === 'tanyaHakmu' && (
         <TanyaHakmu currentPage={currentPage} setCurrentPage={handlePageChange} />
