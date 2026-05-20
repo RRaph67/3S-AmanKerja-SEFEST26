@@ -37,7 +37,7 @@ export const TanyaHakmu: React.FC<TanyaHakmuProps> = ({ currentPage, setCurrentP
     <div className="min-h-screen bg-[#F8FAFC] text-slate-800 antialiased">
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      <main className="mx-auto max-w-7xl px-4 py-10 md:px-12">
+      <main className="max-w-[1200px] mx-auto px-6 py-8 space-y-10">
         <div className="mb-10 max-w-3xl">
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
             Halo, Apa yang Ingin Kamu Ketahui Tentang Hakmu?
