@@ -8,8 +8,8 @@ type FAQItem = {
 };
 
 type TanyaHakmuProps = {
-  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
-  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu') => void;
+  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi';
+  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi') => void;
 };
 
 export const TanyaHakmu: React.FC<TanyaHakmuProps> = ({ currentPage, setCurrentPage }) => {

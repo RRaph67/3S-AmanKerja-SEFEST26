@@ -2,8 +2,9 @@ import React from 'react';
 import { Header } from '../components/Header';
 
 type BantuanDaruratProps = {
-  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu';
-  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu') => void;
+  // Tambahkan 'edukasi' di sini
+  currentPage: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi';
+  setCurrentPage: (page: 'beranda' | 'bantuanDarurat' | 'laporBahaya' | 'tanyaHakmu' | 'edukasi') => void;
 };
 
 export const BantuanDarurat: React.FC<BantuanDaruratProps> = ({ currentPage, setCurrentPage }) => {
